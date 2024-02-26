@@ -52,6 +52,7 @@ use App\Http\Controllers\EmailSubscriptionController;
 use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 use App\Http\Controllers\ProductTransactionController;
 use App\Http\Controllers\AffiliationWithdrawController;
+use App\Http\Controllers\EmailTemplatesController;
 use App\Http\Controllers\ScheduleAppointmentController;
 
 /*
@@ -362,7 +363,10 @@ Route::middleware('auth', 'valid.user')->group(function () {
         Route::get('/subscribedPlan/{id}/update', [SubscriptionController::class, 'userSubscribedPlanUpdate'])->name('subscription.user.plan.update');
         //        Route::get('logs', [LogViewerController::class, 'index']);
         //dashboard
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('sadmin.dashboard');
+        // Route::get('/dashboard', [DashboardController::class, 'index'])->name('sadmin.dashboard');
+        Route::get('/dashboard', function(){
+            return view('emails.contactUs');
+        })->name('sadmin.dashboard');
 
         // NFC Routes
         Route::get('/nfc-card-types', [NfcController::class, 'index'])->name('sadmin.nfc.card.types');
@@ -420,7 +424,9 @@ Route::middleware('auth', 'valid.user')->group(function () {
         )->name('sadmin.change-withdrawal-status');
         //vcards templates
         Route::get('/templates', [VcardController::class, 'template'])->name('sadmin.templates.index');
-        Route::get('/emailTemplates', [VcardController::class, 'template'])->name('sadmin.emailTemplates.index');
+        Route::get('/email-templates', [EmailTemplatesController::class, 'index'] )->name('sadmin.emailTemplates.index');
+        Route::get('/email-templates/edit/{id}', [EmailTemplatesController::class, 'edit'] )->name('emailTemplates.edit');
+        Route::put('/email-templates/update/{id}', [EmailTemplatesController::class, 'update'] )->name('sadmin.emailTemplates.update');
         //analytics
         Route::get('/vcard/{vcard}/analytics', [VcardController::class, 'analytics'])->name('sadmin.vcard.analytics');
         //country

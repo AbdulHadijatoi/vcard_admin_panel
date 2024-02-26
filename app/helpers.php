@@ -27,6 +27,7 @@ use App\Models\Role as CustomRole;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\App;
 use App\Mail\PlanExpirationReminder;
+use App\Models\EmailTemplate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
@@ -2218,4 +2219,18 @@ function homePageLayout()
 
 function getCurrencyIcon($currencyCode){
     return Currency::whereCurrencyCode($currencyCode)->first()->currency_icon;
+}
+
+function getEmailTemplateContent($id){
+    // Retrieve the email template from the database
+    $emailTemplate = EmailTemplate::where("id",$id)->first();
+
+    // Check if the template is found
+    if ($emailTemplate) {
+        // Replace the placeholder with "$"
+        return str_replace("____DLRSMBL___", "$", $emailTemplate->content);
+    } else {
+        // Handle case where template is not found
+        return false;
+    }
 }

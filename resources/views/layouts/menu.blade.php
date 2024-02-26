@@ -58,10 +58,10 @@
         </a>
     </li>
     
-    <li class="nav-item {{ Request::is('sadmin/emailTemplates*') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('sadmin/email-templates*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page"
             href="{{ route('sadmin.emailTemplates.index') }}">
-            <span class="aside-menu-icon pe-3"><i class="fa fa-paper-plane"></i></span>
+            <span class="aside-menu-icon pe-3"><i class="fa fa-envelope"></i></span>
             <span class="aside-menu-title">{{ __('messages.email_templates') }}</span>
         </a>
     </li>
