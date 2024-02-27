@@ -7,7 +7,14 @@
     @endslot
 
     {{-- Body --}}
-    <div>
+
+    @php
+        $templateContent = getEmailTemplateContent(14);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
+    {{-- <div>
         <h2>{{ __('messages.mail.hello') }} <b>{{ $data['user']['first_name'] . ' ' . $data['user']['last_name'] }}</b></h2>
         <p> {{ __('messages.mail.please_click') }}</p>
         @component('mail::button', ['url' => $data['url']])
@@ -18,7 +25,7 @@
         <p>{{ getAppName() }}</p>
         <hr>
         <p>{{ __('messages.mail.slot_text') }}: <a href="{{ $data['url'] }}">{!! $data['url'] !!}</a></p>
-    </div>
+    </div> --}}
 
     {{-- Footer --}}
     @slot('footer')

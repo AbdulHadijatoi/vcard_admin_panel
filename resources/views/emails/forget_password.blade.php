@@ -6,8 +6,14 @@
         @endcomponent
     @endslot
 
+    @php
+        $templateContent = getEmailTemplateContent(6);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
     {{-- Body --}}
-    <div>
+    {{-- <div>
         <h2>{{ __('messages.mail.hello') }} <b>{{ $user->first_name . ' ' . $user->last_name }}</b></h2>
         <p> {{ __('You are receiving this email because we received a password reset request for your account.') }}</p>
         @component('mail::button', ['url' => $url])
@@ -18,7 +24,7 @@
         <p>{{ getAppName() }}</p>
         <hr>
         <p>{{ __('If you\'re having trouble clicking the "Reset Password" button, copy and paste the URL below into your web browser:') }}: <a href="{{ $url }}">{!! $url !!}</a></p>
-    </div>
+    </div> --}}
 
     {{-- Footer --}}
     @slot('footer')

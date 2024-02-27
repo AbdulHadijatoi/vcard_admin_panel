@@ -7,14 +7,20 @@
     @endslot
 
 
+    @php
+        $templateContent = getEmailTemplateContent(3);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
     {{-- Body --}}
-    <div>
+    {{-- <div>
         <h2>{{ __('messages.mail.hello') }} <b>{{ $name }}</b></h2>
         <p> {{ __('messages.mail.book_successfully') }} {{$date}}  {{ __('messages.mail.between') }} {{ $from_time }}
             {{ __('messages.common.to') }} {{ $to_time }}</p>
         <p>{{ __('messages.mail.thanks_regard') }}</p>
         <p>{{ getAppName() }}</p>
-    </div>
+    </div> --}}
 
 
     {{-- Footer --}}

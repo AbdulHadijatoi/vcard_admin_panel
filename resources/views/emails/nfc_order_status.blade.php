@@ -8,7 +8,13 @@
     @endslot
 
     {{-- Body --}}
-    <div>
+    @php
+        $templateContent = getEmailTemplateContent(10);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
+    {{-- <div>
         <div>
             <h2>{{ __('messages.mail.hello') }} <b>{{ $order['name'] }}</b></h2>
             <p> {{ __('messages.nfc.your_order_status_changed') }}</p>
@@ -16,7 +22,7 @@
             <p>{{ __('messages.mail.thanks_regard') }}</p>
             <p>{{ getAppName() }}</p>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Footer --}}
     @slot('footer')

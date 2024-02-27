@@ -6,14 +6,19 @@
         @endcomponent
     @endslot
 
+    @php
+        $templateContent = getEmailTemplateContent(1);
+        $compiledContent = Blade::compileString($templateContent);
 
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
     {{-- Body --}}
-    <div>
+    {{-- <div>
         <h2>{{ __('messages.mail.hello') }}</h2>
         <p> {{ __('messages.mail.new_nfc_order') }} {{$nfcOrder['name']}}
         <p>{{ __('messages.mail.thanks_regard') }}</p>
         <p>{{ getAppName() }}</p>
-    </div>
+    </div> --}}
 
 
     {{-- Footer --}}

@@ -14,7 +14,7 @@ class AppointmentMail extends Mailable
      * @var array
      */
     private $data;
-
+  
     /**
      * Create a new message instance.
      *
@@ -34,6 +34,11 @@ class AppointmentMail extends Mailable
     {
         return $this->subject($this->subject)
             ->markdown($this->view)
-            ->with($this->data);
+            ->with([
+                    "name"=>$this->data['name'],
+                    'date' => $this->data['date'], 
+                    'from_time' => $this->data['from_time'],
+                    'to_time' => $this->data['to_time']
+                ]);
     }
 }

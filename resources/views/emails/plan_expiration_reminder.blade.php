@@ -6,11 +6,19 @@
         @endcomponent
     @endslot
 
-   <p>{{ __('messages.mail.hello') }} {{ $data['first_name']}} {{ $data['last_name'] }}</p>
+    @php
+        $templateContent = getEmailTemplateContent(11);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
+   {{-- <p>{{ __('messages.mail.hello') }} {{ $data['first_name']}} {{ $data['last_name'] }}</p>
 
    <p>{{ __('messages.mail.plan_expire') }}</p>
 
-   <p>{{ __('messages.mail.thanks_regard') }}</p>
+   <p>{{ __('messages.mail.thanks_regard') }}</p> --}}
+
+
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')

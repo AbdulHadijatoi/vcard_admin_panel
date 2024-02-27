@@ -6,7 +6,14 @@
                 alt="{{ getAppName() }}">
         @endcomponent
     @endslot
-    <div>
+    
+    @php
+        $templateContent = getEmailTemplateContent(12);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
+    {{-- <div>
         <h2>Hello </h2>
         <p>You have received an invite from {{ $input['username'] }}.</p>
         Please click on below link to get register.
@@ -15,7 +22,7 @@
         <p></p>
         <p>Thanks & Regards,</p>
         <p>{{ getAppName() }}</p>
-    </div>
+    </div> --}}
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')

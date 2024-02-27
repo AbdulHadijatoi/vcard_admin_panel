@@ -49,6 +49,28 @@
 
                         {{ Form::close() }}
 
+                        <br/>
+                        <br/>
+
+                        {!! Form::open(['route' => [$template->route_name], 'method' => 'post']) !!}
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="mb-5">
+                                    {{ Form::label('email', __('messages.plan.email_address') .':', ['class' => 'form-label required']) }}
+                                    {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => __('messages.plan.email_address'), 'required', 'id' => 'email']) }}
+                                </div>
+                            </div>
+                            
+                            <div>
+                                {{ Form::submit(__('messages.plan.sendemail'), ['class' => 'btn btn-primary me-3']) }}
+                            </div>    
+                            
+                        </div>
+
+
+                        {{ Form::close() }}
+
                         <script>
                             $(document).ready(function() {
                                 $('#editor').summernote();

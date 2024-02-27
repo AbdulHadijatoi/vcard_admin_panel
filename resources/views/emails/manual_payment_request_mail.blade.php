@@ -6,6 +6,8 @@
                  alt="{{ getAppName() }}">
         @endcomponent
     @endslot
+    
+    
     <h2>Hello, </h2>
     <p>{{__('messages.mail.new_manual_payment_request')}}</p>
     {!! $input['super_admin_msg'] !!}
@@ -21,6 +23,8 @@
     </div>
     <p style="margin-top: 15px">{{ __('messages.mail.thanks_regard') }}</p>
     <p>{{ getAppName() }}</p>
+
+
     @slot('footer')
         @component('mail::footer')
             <h6>© {{ date('Y') }} {{ getAppName() }}.</h6>

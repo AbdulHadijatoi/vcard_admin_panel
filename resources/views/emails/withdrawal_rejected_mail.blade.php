@@ -9,7 +9,13 @@
 
 
     {{-- Body --}}
-    <div>
+    @php
+        $templateContent = getEmailTemplateContent(16);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
+    {{-- <div>
 	    <h2>{{ __('messages.mail.hello') }} <b>{{ $toName }}</b></h2>
 	    <p><b>Your Withdrawal Request of amount {{ currencyFormat($amount,2) }} is Rejected.</b></p>
 	    @if(!empty($rejectionNote))
@@ -18,7 +24,7 @@
 	    @endif
 	    <p>Thanks & Regards,</p>
 	    <p>{{ getAppName() }}</p>
-    </div>
+    </div> --}}
 
 
     {{-- Footer --}}

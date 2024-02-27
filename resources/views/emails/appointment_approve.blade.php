@@ -7,8 +7,14 @@
         @endcomponent
     @endslot
 
+    @php
+        $templateContent = getEmailTemplateContent(2);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
     {{-- Body --}}
-    <div>
+    {{-- <div>
         <div>
             <h2>{{ __('messages.mail.hello') }} <b>{{ $input['name'] }}</b></h2>
             <p> {{ __('messages.mail.approved_successfully') }} {{ $input['date'] }} {{ __('messages.mail.between') }}
@@ -17,7 +23,7 @@
             <p>{{ __('messages.mail.thanks_regard') }}</p>
             <p>{{ getAppName() }}</p>
         </div>
-    </div>
+    </div> --}}
 
     {{-- Footer --}}
     @slot('footer')

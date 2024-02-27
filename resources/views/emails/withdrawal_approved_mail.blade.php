@@ -9,11 +9,17 @@
 
 
     {{-- Body --}}
-    <div>
+    @php
+        $templateContent = getEmailTemplateContent(15);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
+    {{-- <div>
         <h2>{{ __('messages.mail.hello') }} <b>{{ $toName }}</b></h2>
         <p><b>Your Withdrawal request of amount {{ currencyFormat($amount,2) }} is Approved.</b></p>
         <p>{{ getAppName() }}</p>
-    </div>
+    </div> --}}
 
     {{-- Footer --}}
     @slot('footer')

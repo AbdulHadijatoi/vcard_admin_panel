@@ -8,14 +8,20 @@
 
 
     {{-- Body --}}
-    <div>
+    @php
+        $templateContent = getEmailTemplateContent(13);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
+    {{-- <div>
         <h2>{{ __('messages.mail.hello') }} <b>{{ $toName }}</b></h2>
         <p><b>{{ $name }}  {{ __('messages.mail.booked_appointment_with_you') }} </b>.</p>
         <p><b>{{ __('messages.mail.appointment_time') }} : </b> {{ $date }} - {{ $from_time }} {{__('messages.common.to')}} {{ $to_time }}</p>
         <p><b>{{ __('messages.mail.vcard_name') }} </b> {{ $vcard_name }}</p>
         <p><b>{{ __('messages.vcard.mobile_number') }} : </b> {{ $phone }}</p>
         <p>{{ getAppName() }}</p>
-    </div>
+    </div> --}}
 
 
     {{-- Footer --}}

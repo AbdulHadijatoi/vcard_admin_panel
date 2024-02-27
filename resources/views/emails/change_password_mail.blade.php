@@ -7,14 +7,20 @@
     @endslot
 
 
+    @php
+        $templateContent = getEmailTemplateContent(4);
+        $compiledContent = Blade::compileString($templateContent);
+
+        eval(' ?>' . $compiledContent . '<?php ');
+    @endphp
     {{-- Body --}}
-    <div>
+    {{-- <div>
         <h2>{{ __('messages.mail.hello')  }} {{ $name }}</h2>
             <p> {{ __('messages.mail.password_change')}} <b> {{$toName}}.</b> </p>
         <p>{{ __('messages.mail.please_contact_your_admin') }}</p>
         <p>{{ __('messages.mail.thanks_regard') }}</p>
         <p>{{ getAppName() }}</p>
-    </div>
+    </div> --}}
 
 
     {{-- Footer --}}
