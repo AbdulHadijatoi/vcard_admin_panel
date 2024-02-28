@@ -363,10 +363,8 @@ Route::middleware('auth', 'valid.user')->group(function () {
         Route::get('/subscribedPlan/{id}/update', [SubscriptionController::class, 'userSubscribedPlanUpdate'])->name('subscription.user.plan.update');
         //        Route::get('logs', [LogViewerController::class, 'index']);
         //dashboard
-        // Route::get('/dashboard', [DashboardController::class, 'index'])->name('sadmin.dashboard');
-        Route::get('/dashboard', function(){
-            return view('emails.contactUs');
-        })->name('sadmin.dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('sadmin.dashboard');
+
 
         // NFC Routes
         Route::get('/nfc-card-types', [NfcController::class, 'index'])->name('sadmin.nfc.card.types');
@@ -427,6 +425,26 @@ Route::middleware('auth', 'valid.user')->group(function () {
         Route::get('/email-templates', [EmailTemplatesController::class, 'index'] )->name('sadmin.emailTemplates.index');
         Route::get('/email-templates/edit/{id}', [EmailTemplatesController::class, 'edit'] )->name('emailTemplates.edit');
         Route::put('/email-templates/update/{id}', [EmailTemplatesController::class, 'update'] )->name('sadmin.emailTemplates.update');
+        Route::get('/email-templates/smtp_setting', [EmailTemplatesController::class, 'smtpSetting'] )->name('smtpSetting');
+        Route::put('/email-templates/smtp_setting_update', [EmailTemplatesController::class, 'smtpSettingUpdate'] )->name('smtpSettingUpdate');
+       
+        Route::post('/email-templates/admin-nfc-order-mail/{email?}', [EmailTemplatesController::class, 'adminNfcOrderMail'])->name('adminNfcOrderMail');
+        Route::post('/email-templates/appointment-approve-mail/{email?}', [EmailTemplatesController::class, 'appointmentApproveMail'])->name('appointmentApproveMail');
+        Route::post('/email-templates/appointment-mail/{email?}', [EmailTemplatesController::class, 'appointmentMail'])->name('appointmentMail');
+        Route::post('/email-templates/change-password-mail/{email?}', [EmailTemplatesController::class, 'changePasswordMail'])->name('changePasswordMail');
+        Route::post('/email-templates/contact-us-mail/{email?}', [EmailTemplatesController::class, 'contactUsMail'])->name('contactUsMail');
+        Route::post('/email-templates/forget-password-mail/{email?}', [EmailTemplatesController::class, 'forgetPasswordMail'])->name('forgetPasswordMail');
+        Route::post('/email-templates/landing-contact-us-mail/{email?}', [EmailTemplatesController::class, 'landingContactUsMail'])->name('landingContactUsMail');
+        Route::post('/email-templates/manual-payment-guide-mail/{email?}', [EmailTemplatesController::class, 'manualPaymentGuideMail'])->name('manualPaymentGuideMail');
+        Route::post('/email-templates/nfc-order-status-mail/{email?}', [EmailTemplatesController::class, 'nfcOrderStatusMail'])->name('nfcOrderStatusMail');
+        Route::post('/email-templates/plan-expiration-reminder/{email?}', [EmailTemplatesController::class, 'planExpirationReminder'])->name('planExpirationReminder');
+        Route::post('/email-templates/send-invite-mail/{email?}', [EmailTemplatesController::class, 'sendinviteMail'])->name('sendinviteMail');
+        Route::post('/email-templates/send-withdrawal-request-changed-mail/{email?}', [EmailTemplatesController::class, 'sendWithdrawalRequestChangedMail'])->name('sendWithdrawalRequestChangedMail');
+        Route::post('/email-templates/super-admin-manual-payment-mail/{email?}', [EmailTemplatesController::class, 'superAdminManualPaymentMail'])->name('superAdminManualPaymentMail');
+        Route::post('/email-templates/user-appointment-mail/{email?}', [EmailTemplatesController::class, 'userAppointmentMail'])->name('userAppointmentMail');
+        Route::post('/email-templates/verify-mail/{email?}', [EmailTemplatesController::class, 'verifyMail'])->name('verifyMail');
+
+
         //analytics
         Route::get('/vcard/{vcard}/analytics', [VcardController::class, 'analytics'])->name('sadmin.vcard.analytics');
         //country

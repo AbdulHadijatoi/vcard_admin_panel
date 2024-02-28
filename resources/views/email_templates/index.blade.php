@@ -5,6 +5,14 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex flex-column table-striped">
+            <div class="d-flex justify-content-between align-items-end mb-5">
+                <h1> {{__('messages.email_templates')}}</h1>
+                <a class="btn btn-outline-primary float-end"
+                   href="{{ route('smtpSetting') }}">{{ __('messages.smtp_setting') }}</a>
+                   <a class='btn px-4 py-2 bg-gray-800 text-white'>
+                       {{ __('messages.user.change_password') }}
+                   </a>
+            </div>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>

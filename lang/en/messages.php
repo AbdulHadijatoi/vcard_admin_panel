@@ -41,6 +41,14 @@ return [
     'template' => 'Template',
     'edit_email_template' => 'Edit Email Template',
     'smtp_setting' => 'SMTP Setting',
+    'host' => 'Host',
+    'port' => 'Port',
+    'username' => 'Username',
+    'password' => 'Password',
+    'encryption' => 'Encryption',
+    'from_address' => 'From address',
+    'from_name' => 'From name',
+    'updated_successfully' => 'Updated successfully!',
 
 
     'wait_for_apporove_of_cash_payment_by_admin' => 'Your Manual Transaction Request Is Pending.',
